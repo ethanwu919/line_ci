@@ -29,3 +29,91 @@ LineBot::index jsonObj== stdClass Object
     [destination] => U1b03966d05460b7f10ed39a96268da9d
 )
 
+LineBot::index jsonObj== stdClass Object
+(
+    [events] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => message
+                    [replyToken] => 72e45970e9674af2bbde570e648b2da5
+                    [source] => stdClass Object
+                        (
+                            [userId] => U441d6e3ecb6ff7bb420ad468f721656a
+                            [type] => user
+                        )
+
+                    [timestamp] => 1555040050802
+                    [message] => stdClass Object
+                        (
+                            [type] => sticker
+                            [id] => 9678961566817
+                            [stickerId] => 268
+                            [packageId] => 4
+                        )
+
+                )
+
+        )
+
+    [destination] => U1b03966d05460b7f10ed39a96268da9d
+)
+
+LineBot::index jsonObj== stdClass Object
+(
+    [events] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => message
+                    [replyToken] => 1476ed1ea84f434190a5c8244b4aeba3
+                    [source] => stdClass Object
+                        (
+                            [userId] => U441d6e3ecb6ff7bb420ad468f721656a
+                            [type] => user
+                        )
+
+                    [timestamp] => 1555040118725
+                    [message] => stdClass Object
+                        (
+                            [type] => text
+                            [id] => 9678966844233
+                            [text] => G
+                        )
+
+                )
+
+        )
+
+    [destination] => U1b03966d05460b7f10ed39a96268da9d
+)
+
+LineBot::index jsonObj== stdClass Object
+(
+    [events] => Array
+        (
+            [0] => stdClass Object
+                (
+                    [type] => message
+                    [replyToken] => 484560ee7dec4406acc71154977dff1e
+                    [source] => stdClass Object
+                        (
+                            [userId] => U441d6e3ecb6ff7bb420ad468f721656a
+                            [type] => user
+                        )
+
+                    [timestamp] => 1555040121718
+                    [message] => stdClass Object
+                        (
+                            [type] => text
+                            [id] => 9678967075909
+                            [text] => Peter 
+                        )
+
+                )
+
+        )
+
+    [destination] => U1b03966d05460b7f10ed39a96268da9d
+)
+
