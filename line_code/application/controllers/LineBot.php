@@ -12,6 +12,7 @@ Class LineBot extends CI_Controller
         $jsonString = file_get_contents('php://input');
         //轉成JSON
         $jsonObj = json_decode($jsonString);
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' jsonObj== ' .print_r($jsonObj,1)."\n", 3, "application/debug.log");
 
         //設定變數給JSON的各欄位
         $event = $jsonObj->{"events"}[0];
