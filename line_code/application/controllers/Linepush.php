@@ -12,10 +12,16 @@ Class Linepush extends CI_Controller
         $accessToken = 'nj24/TxPds394e/2cS0ISdWp6KHgtBOpKRkQjFYX2eDjtknNPnUO6MTb4AeZSbOMhFjWeXaT32Zzx44x05s77BaHfbxaKf6i4nkx9for8KIRLDZ6coFWnOZpebtuwmfbjCTGQsaVnhOO06QWYhpKUAdB04t89/1O/w1cDnyilFU=';
 
         $channelAccessToken = 'nj24/TxPds394e/2cS0ISdWp6KHgtBOpKRkQjFYX2eDjtknNPnUO6MTb4AeZSbOMhFjWeXaT32Zzx44x05s77BaHfbxaKf6i4nkx9for8KIRLDZ6coFWnOZpebtuwmfbjCTGQsaVnhOO06QWYhpKUAdB04t89/1O/w1cDnyilFU=';
-$message = isset($argv[1]) ? $argv[1] : 'Hello!';
-$dbFilePath = __DIR__ . '/line-db.json';  // user info database file path
-error_log(__CLASS__ . '::' . __FUNCTION__ . ' dbFilePath ' .print_r($dbFilePath,1)."\n", 3, "application/debug.log");
+        $message = isset($argv[1]) ? $argv[1] : 'hsiang!';
+        $dbFilePath = __DIR__ . '/line-db.json';  // user info database file path
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' dbFilePath ' .print_r($dbFilePath,1)."\n", 3, "application/debug.log");
 
+
+
+       $jsonString = file_get_contents('php://input');
+        //轉成JSON
+       $jsonObj = json_decode($jsonString);
+      error_log(__CLASS__ . '::' . __FUNCTION__ . ' jsonObj== ' .print_r($jsonObj,1)."\n", 3, "application/debug.log");
 // open json database
 // if (!file_exists($dbFilePath)) {
 //    file_put_contents($dbFilePath, json_encode(['user' => []]));
@@ -36,7 +42,9 @@ error_log(__CLASS__ . '::' . __FUNCTION__ . ' dbFilePath ' .print_r($dbFilePath,
  
 // make payload
 
-$userIds='U9e5d5a962e7aad007bf9754a59424813';
+$userIds='Ua2bb463109a1adabb916b32093f9b811';
+//$userIds='U9e5d5a962e7aad007bf9754a59424813';
+
 $payload = [
    'to' => $userIds,
    'messages' => [
