@@ -14,7 +14,7 @@ Class Line_push_reply extends CI_Controller
     public function index()
     {
       error_log(__CLASS__ . '::' . __FUNCTION__ . ' # API Start ' ."\n", 3, "application/debug.log");
-      $accessToken = 'PEVQ6hVQ2jr/awPqheuItFYjFC6bViubXX6EVVse1FqeCrzGPmg+dybQyEz6iLAbsANSn2iu+rckkq9ffKUc9XyM8bt0h355eRj1tM9gsBI+GZzXFeA7opyFrUPr87mr7cFremw7aX+9gElhJH+nugdB04t89/1O/w1cDnyilFU=';
+      $accessToken = 'emXMC6b7yz1Y3iyBdtCMFyoJl1rVmSYlNjFtJY4L9LPCaWsQR8Dr5bO/KMkhG5m0sANSn2iu+rckkq9ffKUc9XyM8bt0h355eRj1tM9gsBLh8CUnbUK8S+cjwcFcBJ4YKY4WwXjFycXPo7xIVXZVmwdB04t89/1O/w1cDnyilFU=';
        // $userid= $this->get_userid();
       
         //取得user丟過來的訊息
