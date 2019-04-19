@@ -14,7 +14,7 @@ Class Line_push_reply extends CI_Controller
     public function index()
     {
       error_log(__CLASS__ . '::' . __FUNCTION__ . ' # API Start ' ."\n", 3, "application/debug.log");
-      $accessToken = 'emXMC6b7yz1Y3iyBdtCMFyoJl1rVmSYlNjFtJY4L9LPCaWsQR8Dr5bO/KMkhG5m0sANSn2iu+rckkq9ffKUc9XyM8bt0h355eRj1tM9gsBLh8CUnbUK8S+cjwcFcBJ4YKY4WwXjFycXPo7xIVXZVmwdB04t89/1O/w1cDnyilFU=';
+      $accessToken = 'uGxr+DL6t7mBqPoXDOoHjbifRdiVWyFvyZUEGeNHyLY6Rs55IJdoezAy/KoFKS+IUMDoE2T1s8RGZ9Qei46THxOTDbAQRCQsHUXTpTHiFKodRE4Igg2aMJ5OrWTqV9d4A/zJgt3UObl9nWKzSTSPrgdB04t89/1O/w1cDnyilFU=';
        // $userid= $this->get_userid();
       
         //取得user丟過來的訊息
@@ -42,6 +42,8 @@ Class Line_push_reply extends CI_Controller
             //將使用者發送訊息記錄在資料庫
             $this->insert_user_log($user_id,$one);
         }
+
+        //$this->push_line_msg($accessToken,$user_id);
         
     }
      
@@ -76,7 +78,7 @@ Class Line_push_reply extends CI_Controller
             "messages" => [
                 [
                     "type" => "text",
-                    "text" => "恭喜成為本公司好友 請按數字2   可以接收本公司最新優惠消息"
+                    "text" => "恭喜成為普匯小幫手line好友 請按數字2   直接接收本公司目前最新活動消息"
                 ]
             ]
         ];
@@ -111,8 +113,9 @@ Class Line_push_reply extends CI_Controller
             "replyToken" => $replyToken,
             "messages" => [
                 [
-                    "type" => "text",
-                    "text" => "目前優惠產品：ＸＸＸＸＸ"
+                    "type" => "image",
+                    "originalContentUrl" => "https://lh6.googleusercontent.com/zuhErUOObcnReXnuGhWuCKg1Q_uJqGd4xTvwDJ2VUOpIdfMzM1TAtlKpApRHgPUjtL6LvooEWw=w1488",
+                    "previewImageUrl" => "https://www.pu-hey.com/wp-content/uploads/2019/04/%E9%AB%98%E6%87%89%E5%A4%A7%E6%BC%94%E8%AC%9BDM-370x230.jpg",
                 ]
             ]
         ];
@@ -138,5 +141,67 @@ Class Line_push_reply extends CI_Controller
        curl_close($ch);
 
     }
+
+    public function lecture_event() {
+
+        $accessToken = 'uGxr+DL6t7mBqPoXDOoHjbifRdiVWyFvyZUEGeNHyLY6Rs55IJdoezAy/KoFKS+IUMDoE2T1s8RGZ9Qei46THxOTDbAQRCQsHUXTpTHiFKodRE4Igg2aMJ5OrWTqV9d4A/zJgt3UObl9nWKzSTSPrgdB04t89/1O/w1cDnyilFU=';
+       
+
+       $jsonString = file_get_contents('php://input');
+       //轉成JSON
+       $jsonObj = json_decode($jsonString);
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' jsonObj== ' .print_r($jsonObj,1)."\n", 3, "application/debug.log");
+
+
+       $userIds='U2de07b3c0cc2ce2371e5b0a63741fba6';
+       
+        $payload = [
+            'to' => $userIds, //要推給誰
+            'messages' => array(
+                array(
+                    'type' => 'template', // 訊息類型 (模板)
+                    'altText' => 'Example confirm template', // 替代文字
+                    'template' => array(
+                        'type' => 'confirm', // 類型 (確認)
+                        'text' => '是否有參與今日 4/25（四）擁抱AI，創新金融科技座談會 ?', // 文字
+                        'actions' => array(
+                            array(
+                                'type' => 'message', // 類型 (訊息)
+                                'label' => 'Yes', // 標籤 1
+                                'text' => 'Yes' // 用戶發送文字 1
+                            ),
+                            array(
+                                'type' => 'message', // 類型 (訊息)
+                                'label' => 'No', // 標籤 2
+                                'text' => 'No' // 用戶發送文字 2
+                            )
+                        )
+                    )
+                )
+            )
+         ];    
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' payload ' .print_r($payload,1)."\n", 3, "application/debug.log");
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.line.me/v2/bot/message/push');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $accessToken
+        ]);
+        $result = curl_exec($ch);
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' result = ' .print_r($result,1)."\n", 3, "application/debug.log");
+
+        curl_close($ch);
+
+    
+    }
+
+
  
 }
