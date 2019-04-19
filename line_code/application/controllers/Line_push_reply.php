@@ -203,5 +203,61 @@ Class Line_push_reply extends CI_Controller
     }
 
 
+
+    // "messages" => [
+    //     [
+    //         "type" => "video",
+    //         "originalContentUrl" => "https://www.youtube.com/watch?v=YO-BODCKYSw",
+    //         "previewImageUrl"=> "https://www.pu-hey.com/wp-content/uploads/2016/08/Men-03.png"
+
+    //     ]
+    // ]
+
+    public function push_test_video() {
+
+        $accessToken = 'uGxr+DL6t7mBqPoXDOoHjbifRdiVWyFvyZUEGeNHyLY6Rs55IJdoezAy/KoFKS+IUMDoE2T1s8RGZ9Qei46THxOTDbAQRCQsHUXTpTHiFKodRE4Igg2aMJ5OrWTqV9d4A/zJgt3UObl9nWKzSTSPrgdB04t89/1O/w1cDnyilFU=';
+       
+
+       $jsonString = file_get_contents('php://input');
+       //轉成JSON
+       $jsonObj = json_decode($jsonString);
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' jsonObj== ' .print_r($jsonObj,1)."\n", 3, "application/debug.log");
+
+
+       $userIds='U2de07b3c0cc2ce2371e5b0a63741fba6';
+       
+        $payload = [
+            'to' => $userIds, //要推給誰
+            'messages' => [
+                    [
+                        "type" => "video",
+                        "originalContentUrl" => "https://api.reh.tw/line/bot/example/assets/videos/example.mp4",
+                        "previewImageUrl" => "https://www.pu-hey.com/wp-content/uploads/2018/12/Men-01-3-270x200.png"
+                    ]
+                ]
+         ];    
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' payload ' .print_r($payload,1)."\n", 3, "application/debug.log");
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://api.line.me/v2/bot/message/push');
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $accessToken
+        ]);
+        $result = curl_exec($ch);
+        error_log(__CLASS__ . '::' . __FUNCTION__ . ' result = ' .print_r($result,1)."\n", 3, "application/debug.log");
+
+        curl_close($ch);
+
+    
+    }
+
+
  
 }
