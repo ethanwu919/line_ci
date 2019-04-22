@@ -73,12 +73,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost:8889',
+// 	'username' => 'root',
+// 	'password' => 'root',
+// 	'database' => 'backend',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+
+
+//DB連線到line pass(local test)
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:8889',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'backend',
+	//'hostname' => 'event.pu-hey.com:3306',
+	'hostname' => 'localhost:3306',
+	'username' => 'line',
+	'password' => 'S!%F9$Nmh3Tf9rrB*f&G',
+	'database' => 'line',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

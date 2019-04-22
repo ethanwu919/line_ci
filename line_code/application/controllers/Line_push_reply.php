@@ -62,9 +62,9 @@ Class Line_push_reply extends CI_Controller
  
  
     public function check_user_id($user_id) {
-        error_log(__CLASS__ . '::' . __FUNCTION__ .' user_id ='.$user_id."\n", 3, "application/debug.log");
-        $this->load->model('check_user_id_model'); // 載入model
-        $check= $this->check_user_id_model->check_user_id($user_id);
+        error_log(__CLASS__ . '::' . __FUNCTION__ .' user_id = '.$user_id."\n", 3, "application/debug.log");
+        $this->load->model('Check_user_id_model'); // 載入model
+        $check= $this->Check_user_id_model->check_user_id($user_id);
        return $check;
 
     }
