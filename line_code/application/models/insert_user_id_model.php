@@ -1,5 +1,5 @@
 <?php
-class insert_user_id_model extends CI_Model {
+class Insert_user_id_model extends CI_Model {
     function __construct() { // 建構值
         parent::__construct (); 
         {

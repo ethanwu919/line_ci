@@ -9,7 +9,7 @@ class insert_user_log_model extends CI_Model {
  
     function insert_user_log($user_id,$msg) {  
       
-        $sql="INSERT INTO  line_user_log (line_user_id,msg)  VALUES " . " (" ."'".$user_id."'".",". "'".$msg."'". ") ";
+        $sql="INSERT INTO  line_user_log (line_user_id,msg,come_from)  VALUES " . " (" ."'".$user_id."'".",". "'".$msg."'"  .",'User'"  . ") ";
         error_log(__CLASS__ . '::' . __FUNCTION__ ."sql = ".print_r($sql,1)."\n", 3, "application/debug.log");
         $result=$this->db->query($sql); 
         error_log(__CLASS__ . '::' . __FUNCTION__ ." result = ".print_r($result,1)."\n", 3, "application/debug.log");    
