@@ -29,7 +29,7 @@ Class Line_push_reply extends CI_Controller
         $today = date("Y-m-d H:i:s");  //時間格式 2019-04-22 21:55:05
         error_log(__CLASS__ . '::' . __FUNCTION__ . ' today' .print_r($today,1)."\n", 3, "application/debug.log");
         
-        if($one==1)
+        if($one==9)//關鍵字回覆
         {
         //先檢查是否有重複的登記userID  
         $check= $this->check_user_id($user_id); 
